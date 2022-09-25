@@ -2,19 +2,40 @@ PROYECTO IUD - JOSE DAVID CARDONA.
 
 BACKEND - PRIMERA VERSIÓN DE MERN
 
-# lenguaje utiizado y motor de base de datos
+# Logica de negocio para este backend
+
+     -Controllers
+          ---ControladorTipoEquipo.
+          ---ControladorUsuario.
+          ---ControladorEstadoEquipo.
+          ---ControladorInventario(Actualmente en desarrollo)
+          ---ControladorMarcaEquipo.         
+     -Database
+          ---Configuration.
+     -Models
+          ---EstadoTipoEquipo.
+          ---Usuario.
+          ---EstadoEquipo.
+          ---Inventario.(Actualmente en desarrollo)
+          ---MarcaEquipo.
+     -Routes
+          ---RutasTipoEquipo
+          ---RutasUsuario.
+          ---RutasEstadoEQuipo.
+          ---RutasInventario(Actualmente en Desarrollo)
+     -.ENV
+     -App
+     -Package.lock.JSON
+     -Package.JSON
+     -Server.
+     -Colección de pruebas postman.
      
-     javascript
-     Mongo BD - Atlass
+# Colección de pruebas API/POSTMAN.
 
-# Herramientas utilizadas para el desarrollo
-
-    GIT-SCM
-    GITHUB
-    VISUAL STUDIO CODE.
-    NODE JS.
-
-# Clonar este repositorio.
+     Para que puedas probar este backend se relaciona una carpeta con todas las solicitudes posibles que se pueden realizar al sistema.
+     
+     
+#Clonar este repositorio.
 
     git clone https://github.com/josedav-17/ProyectoIUD.git
 
@@ -26,5 +47,7 @@ BACKEND - PRIMERA VERSIÓN DE MERN
 
     PORT=3000 MONGO_URI=mongodb+srv://:@/?retryWrites=true&w=majority
     
-
+     
+ 
+     
 
