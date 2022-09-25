@@ -5,7 +5,9 @@ BACKEND - PRIMERA VERSIÓN DE MERN
 FRONT END - EN PROCESO....
 
 # PROGRAMA.
-     Se necesita llevar el control de los equipos de cómputo (computadores (escritorio y portátiles), mouse, teclado, monitores, etc.), móviles (celulares, tabletas,        parlantes, etc.), etc. Para ello requiere contar con una aplicación web en donde se registren los datos de los distintos equipos que tienen actualmente en su          inventario para tener un mejor control de dichos equipos.
+     Se necesita llevar el control de los equipos de cómputo (computadores (escritorio y portátiles), mouse, teclado, monitores, etc.), móviles (celulares, tabletas,        
+     parlantes, etc.), etc. Para ello requiere contar con una aplicación web en donde se registren los datos de los distintos equipos que tienen actualmente en su          
+     inventario para tener un mejor control de dichos equipos.
 
 # lenguaje utiizado y motor de base de datos
      
