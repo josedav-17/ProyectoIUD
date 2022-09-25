@@ -1,6 +1,4 @@
-# PROYECTO IUD - JOSE DAVID CARDONA.
-
-# BACKEND - PRIMERA VERSIÓN DE MERN
+# PROYECTO IUD - JOSE DAVID CARDONA - BACKEND
 
 # Logica de negocio para este backend
 
