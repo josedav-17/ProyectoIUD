@@ -14,6 +14,17 @@ BACKEND - PRIMERA VERSIÓN DE MERN
     VISUAL STUDIO CODE.
     NODE JS.
 
+# Clonar este repositorio.
+
+    git clone https://github.com/josedav-17/ProyectoIUD.git
+
+# Ejecutar.  
+
+    Node Server.
+
+# Actualizar el .ENV
+
+    PORT=3000 MONGO_URI=mongodb+srv://:@/?retryWrites=true&w=majority
     
 
 
