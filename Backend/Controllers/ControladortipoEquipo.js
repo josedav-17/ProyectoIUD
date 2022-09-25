@@ -29,32 +29,27 @@ const crearTipoEquipo = async(req = request, res = response) => {
 
 //obtiene todos los tipos de equipo
 const obtenerTipoEquipos = async(req = request, res = response) => {
-    try {
-        const estado = req.query.estado;
-        const query  = {estado: estado};
-        const tipoEquipoBD = await TipoEquipo.find(query);
-        res.json({tipoEquipoBD});
-    }
-    catch (e) {
-        console.log(e);
-        res.status(500).json({msg: 'Error al obtener tipos de equipo'});
+    try{
+        const tipoEquipos = await TipoEquipo.find()
+        res.status(200).json(tipoEquipos)
+    }catch(e){
+      console.log(e)
+      return res.status(500).json({
+        msg: 'Error al obtener tipos de equipo'
+      });
     }
 }
 
 //obtiene un tipo de equipo por id
 const obtenerTipoEquipo = async(req = request, res = response) => {
     try {
-        console.log (req.query);
-        console.log (req.params);
-        const estado = req.query.estado;
-        const id = req.params.id;
-        const query  = {estado: estado, _id: id};
-        const tipoEquipoBD = await TipoEquipo.findOne(query);
-        return res.json ({tipoEquipoBD});
+        const { id } = req.params;
+        const tipoEquipoBD = await TipoEquipo.findById(id);
+        res.json({tipoEquipoBD});
     }
     catch (e) {
         console.log(e);
-        res.status(500).json({msg: 'Error al obtener tipo de equipo'});
+        res.status(500).json({msg: 'Error al obtener tipo de equipo por id'});
     }
 }
 
@@ -62,11 +57,9 @@ const obtenerTipoEquipo = async(req = request, res = response) => {
 const actualizarTipoEquipo = async(req = request, res = response) => {
     try {
         const id = req.params.id;
-        const { estado, usuario, ...data } = req.body;
-        data.nombre = data.nombre.toUpperCase();
-        data.usuario = req.usuario._id;
-        const tipoEquipoBD = await TipoEquipo.findByIdAndUpdate(id, data, { new: true });
-        res.json(tipoEquipoBD);
+        const {nombre} = req.body;
+        const tipoEquipoBD = await TipoEquipo.findByIdAndUpdate(id, {nombre}, {new: true});
+        res.json({tipoEquipoBD});
     }
     catch (e) {
         console.log(e);
@@ -77,8 +70,8 @@ const actualizarTipoEquipo = async(req = request, res = response) => {
 const eliminarTipoEquipo = async(req = request, res = response) => {
     try {
         const id = req.params.id;
-        const tipoEquipoBD = await TipoEquipo.findByIdAndUpdate(id, { estado: false }, { new: true });
-        res.json(tipoEquipoBD);
+        const tipoEquipoBD = await TipoEquipo.findByIdAndDelete(id);
+        res.json({tipoEquipoBD});
     }
     catch (e) {
         console.log(e);

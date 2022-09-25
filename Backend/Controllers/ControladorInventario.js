@@ -1,6 +1,7 @@
 const Inventario = require('../Models/Inventario');
 const Usuario = require('../Models/Usuario');
 const MarcaEquipo = require('../Models/MarcaEquipo');
+const EstadoEquipo = require('../Models/EstadoEquipo');
 
 const { response, request } = require('express');
 
@@ -20,7 +21,7 @@ const crearInventario = async(req = request, res = response) => {
                 msj: 'No existe usuario'
             })
         }
-        // validamos si marca está activa
+        // validamos si a marca del equipo está activa
         const marcaBD = await MarcaEquipo.findOne({
             _id: marcaEquipo._id, estado: true
         })
@@ -30,6 +31,17 @@ const crearInventario = async(req = request, res = response) => {
                 msj: 'No existe marca'
             })
         }
+        //valida el estado del equipo
+        const estadoBD = await EstadoEquipo.findOne({
+            _id: data.estado._id
+        })
+        console.log('estado retornado', estadoBD)
+        if(!estadoBD){
+            return res.status(400).json({
+                msj: 'No existe estado'
+            })
+        }
+        // creamos el inventario
         const inventario = new Inventario(data)
        // console.log(inventario)
         await inventario.save()

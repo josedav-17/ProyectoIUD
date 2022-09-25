@@ -1,0 +1,143 @@
+{
+	"info": {
+		"_postman_id": "e9f45d4e-315f-49b9-afa2-179ee65dac8d",
+		"name": "Marca Equipo",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "21651010"
+	},
+	"item": [
+		{
+			"name": "Obtener Marca Equipo",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/MarcaEquipo",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"MarcaEquipo"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Crear Marca Equipo",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"nombre\": \"Prueba 2\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/MarcaEquipo",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"MarcaEquipo"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener Marca por ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/MarcaEquipo/632e03f7f5caaceb71475873",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"MarcaEquipo",
+						"632e03f7f5caaceb71475873"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Actualizar marca Equipo",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombre\": \"marca editada\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/MarcaEquipo/632f20e72c8ec2cfa95a4b36",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"MarcaEquipo",
+						"632f20e72c8ec2cfa95a4b36"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Eliminar Marca Equipo",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/MarcaEquipo/632e03e6f5caaceb71475871",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"MarcaEquipo",
+						"632e03e6f5caaceb71475871"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

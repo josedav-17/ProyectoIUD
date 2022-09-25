@@ -1,0 +1,71 @@
+{
+	"info": {
+		"_postman_id": "4096f3c5-fdc7-435b-99c3-81f1dbb6e47e",
+		"name": "Inventario",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "21651010"
+	},
+	"item": [
+		{
+			"name": "Consultar inventarios",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"Serial\": \"asdad\",\r\n    \"modelo\": \"asd\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/Inventario",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"Inventario"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "crear inventrio",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"serial\": \"1111-2222-4412\",\r\n\t\"modelo\": \"2021\",\r\n\t\"descripcion\": \"\",\r\n\t\"foto\": \"\",\r\n\t\"color\": \"\",\r\n\t\"fechaCompra\": \"2022-01-01\",\r\n\t\"precio\": \"300\",\r\n\t\"usuario\": {\r\n\t\t\"_id\":\"632dfb5159e9ab359642ffac\"\r\n\t},\r\n\t\"marcaEquipo\": {\r\n\t\t\"_id\": \"632e59820f59da3ae7201ff8\"\r\n\t},\r\n\t\"estadoEquipo\": {\r\n\t\t\"_id\": \"632dfe34c41df5fdb015eba6\"\r\n\t},\r\n\t\"tipoEquipo\": {\r\n\t\t\"_id\": \"6330923972b4a5126244948d\"\r\n\t}\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/Inventario",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"Inventario"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

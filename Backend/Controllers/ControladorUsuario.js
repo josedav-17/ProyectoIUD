@@ -24,71 +24,57 @@ const crearUsuario = async(req = request, res = response) => {
 
 //obtener usuarios
 const obtenerUsuarios = async(req = request, res = response) => {
-    try {
-        console.log (req.query);
-        const estado = req.query.estado;
-        const query  = {estado: estado};
-        const UsuarioBD = await Usuario.find(query);
-        res.json({UsuarioBD});
-    }
-    catch (e) {
-        console.log(e);
-        res.status(500).json({msg: 'Error al obtener usuarios'});
+    try{
+        const usuarios = await Usuario.find()
+        res.status(200).json(usuarios)
+    }catch(e){
+        console.log(e)
+        return res.status(500).json({
+            msg: "Error al consultar usuarios"
+        })
     }
 }
 
 //obtener usuario por id
 const obtenerUsuario = async(req = request, res = response) => {
-    try {
-        console.log (req.query);
-        console.log (req.params);
-        const estado = req.query.estado;
-        const id = req.params.id;
-        const query  = {estado: estado, _id: id};
-        const UsuarioBD = await Usuario.findOne(query);
-        return res.json ({UsuarioBD});
-    }
-    catch (e) {
-        console.log(e);
-        res.status(500).json({msg: 'Error al obtener usuario'});
+    try{
+        const { id } = req.params
+        const usuario = await Usuario.findById(id)
+        res.status(200).json(usuario)
+    }catch(e){
+        console.log(e)
+        return res.status(500).json({
+            msg: "Error al consultar usuario por id"
+        })
     }
 }
 
 //actualizar usuario por id
 const actualizarUsuario = async(req = request, res = response) => {
-    try {
-        console.log (req.query);
-        console.log (req.params);
-        const estado = req.query.estado;
-        const id = req.params.id;
-        const query  = {estado: estado, _id: id};
-        const UsuarioBD = await Usuario.findOneAndUpdate(query, req.body, {new: true});
-        return res.json ({UsuarioBD});
-    }
-    catch (e) {
-        console.log(e);
-        res.status(500).json({msg: 'Error al actualizar usuario'});
+    try{
+        const { id } = req.params
+        const data = req.body
+        const usuario = await Usuario.findByIdAndUpdate(id, data, {new: true})
+        res.status(200).json("Usuario actualizado")
+    }catch(e){
+        console.log(e)
+        return res.status(500).json({
+            msg: "Error al actualizar usuario por id"
+        })
     }
 }
 
 //eliminar usuario por id
 const eliminarUsuario = async(req = request, res = response) => {
-    try {
-        console.log (req.params);
-        const id = req.params.id;
-        const UsuarioBD = await Usuario.findById(id);
-        if (!UsuarioBD) {
-            return res.status(404).json({
-                ok: false,
-                msg: 'No existe un usuario con ese id'
-            });
-        }
-        await Usuario.findByIdAndDelete(id);
-        return res.status(204).json({msg: 'Usuario eliminado', id})
-    }
-    catch (e) {
-        console.log(e);
-        res.status(500).json({msg: 'Error al eliminar usuario'});
+    try{
+        const { id } = req.params
+        const usuario = await Usuario.findByIdAndDelete(id)
+        res.status(200).json("Usuario eliminado")
+    }catch(e){
+        console.log(e)
+        return res.status(500).json({
+            msg: "Error al eliminar usuario por id"
+        })
     }
 }
 

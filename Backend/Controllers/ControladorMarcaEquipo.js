@@ -31,57 +31,63 @@ const crearMarcaEquipo = async(req = request, res = response) => {
 //obtiene todas las marcas de equipo
 const obtenerMarcasEquipos = async(req = request, res = response) => {
     try{
-        console.log(req.query)
-        const estado = req.query.estado
-        const query = { estado: estado }
-        const marcas = await MarcaEquipo.find(query)
-        res.status(200).json(marcas)
+        const marcasEquipos = await MarcaEquipo.find()
+        res.status(200).json(marcasEquipos)
     }catch(e){
-        return res.status(500).json({msj: "no se pudo obtener las marcas"})
+      console.log(e)
+      return res.status(500).json({
+        msg: 'Hable con el administrador - Error al obtener marcas de equipo'
+      })
     }
 }
+
 
 //obtiene una marca de equipo por id
 const obtenerMarcaEquipo = async(req = request, res = response) => {
     try{
-        const id = req.params.id
-        const marcaDB = await MarcaEquipo.findById(id)
-        return res.json(marcaDB)
+        const { id } = req.params
+        const marcaEquipo = await MarcaEquipo.findById(id)  
+        res.status(200).json(marcaEquipo)
     }catch(e){
-        return res.status(500).json({msj: "no se pudo obtener la marca"})
-    }
+        console.log(e)
+        return res.status(500).json({
+            msg: 'Hable con el administrador - Error al obtener marca de equipo por id'
+        })
+        }
 }
+
 
 //actualiza una marca de equipo
 const actualizarMarcaEquipo = async(req = request, res = response) => {
     try{
-        const id = req.params.id
-        const data = req.body
-        console.log(data)
-        console.log(id)
-        data.fechaActualizacion = new Date()
-        console.log(data)
-        const marca = await MarcaEquipo.findByIdAndUpdate(id, data, {new: true})
-        return res.status(201).json(marca)
+        const { id } = req.params
+        const { nombre } = req.body
+        const datos = { nombre }
+        const marcaEquipo = await MarcaEquipo.findByIdAndUpdate(id, datos, {new: true})
+        res.status(200).json("Marca de equipo actualizada correctamente")
     }catch(e){
-        return res.status(500).json({msj: "no se pudo actualizar la marca"})
-    }  
+        console.log(e)
+        return res.status(500).json({
+            msg: 'Hable con el administrador - Error al actualizar marca de equipo'
+        })
+        }
 }
+
 
 //elimina una marca de equipo
 const eliminarMarcaEquipo = async(req = request, res = response) => {
     try{
-        const id = req.params.id
-        const marcaBD = await MarcaEquipo.findById(id)
-        if(!marcaBD){
-            return res.status(404).json({msj: 'No existe marca'})
+        const { id } = req.params
+        const marcaEquipo = await MarcaEquipo.findByIdAndDelete(id)
+        res.status(200).json("Marca de equipo eliminada correctamente")
+    }catch(e){
+        console.log(e)
+        return res.status(500).json({
+            msg: 'Hable con el administrador - Error al eliminar marca de equipo'
+        })
         }
-        await MarcaEquipo.findByIdAndDelete(id)
-        return res.status(204).json({})
-    }catch(error){
-        return res.status(500).json({msj: "esta marca no se puede eliminar"})
-    }
 }
+
 
 module.exports = {
     crearMarcaEquipo,

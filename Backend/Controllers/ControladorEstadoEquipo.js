@@ -24,59 +24,58 @@ const crearEstadoEquipo = async (req = request, res = response) => {
 //consulta todos los estados de equipo
 const consultarEstadoEquipo = async (req = request, res = response) => {
     try{
-        console.log(req.query)
-        const estado = req.query.estado
-        const query = {estado: estado}
-        const estadosEquipoDB = await EstadoEquipo.find(query)
-        return res.json(estadosEquipoDB)
+        const estadoEquipo = await EstadoEquipo.find()
+        res.status(200).json(estadoEquipo)
     }catch(e){
-        console.log(e)
-        return res.status(500).json({msg: "Error al consultar estado de equipo"})  
+      console.log(e)
+      return res.status(500).json({
+        msg: "Error al consultar estado de equipo"
+      })
     }
 }
 
 //consulta un estado de equipo por id
 const consultarEstadoEquipoId = async (req = request, res = response) => {
     try{
-        console.log(req.query)
-        console.log(req.params)
-        const estado = req.query.estado
-        const id = req.params.id
-        const query = {estado: estado, _id: id}
-        const estadoEquipoDB = await EstadoEquipo.findOne(query)
-        return res.json(estadoEquipoDB)
+        const { id } = req.params
+        const estadoEquipo = await EstadoEquipo.findById(id)
+        res.status(200).json(estadoEquipo)
     }catch(e){
         console.log(e)
-        return res.status(500).json({msg: "Error al consultar estado de equipo"})
-    }
+        return res.status(500).json({
+            msg: "Error al consultar estado de equipo por id"
+        })
+        }
 }
 
 //actualiza un estado de equipo por id
 const actualizarEstadoEquipo = async (req = request, res = response) => {
     try{
-        console.log(req.body)
-        console.log(req.params)
-        const data = req.body
-        const id = req.params.id
-        const estadoEquipoDB = await EstadoEquipo.findByIdAndUpdate(id, data, {new: true})
-        return res.json(estadoEquipoDB)
+        const { id } = req.params
+        const { nombre } = req.body
+        const datos = { nombre }
+        const estadoEquipo = await EstadoEquipo.findByIdAndUpdate(id, datos, {new: true})
+        res.status(200).json(estadoEquipo)
     }catch(e){
         console.log(e)
-        return res.status(500).json({msg: "Error al actualizar estado de equipo"})
-    }
+        return res.status(500).json({
+            msg: "Error al actualizar estado de equipo"
+        })
+        }
 }
 
 //elimina un estado de equipo por id
 const eliminarEstadoEquipo = async (req = request, res = response) => {
     try{
-        console.log(req.params)
-        const id = req.params.id
-        const estadoEquipoDB = await EstadoEquipo.findByIdAndUpdate(id, {estado: false}, {new: true})
-        return res.json(estadoEquipoDB)
+        const { id } = req.params
+        const estadoEquipo = await EstadoEquipo.findByIdAndDelete(id)
+        res.status(200).json(estadoEquipo)
     }catch(e){
         console.log(e)
-        return res.status(500).json({msg: "Error al eliminar estado de equipo"})
-    }
+        return res.status(500).json({
+            msg: "Error al eliminar estado de equipo"
+        })
+        }
 }
 
 module.exports = {
