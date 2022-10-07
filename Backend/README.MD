@@ -1,51 +1,15 @@
-# PROYECTO IUD - JOSE DAVID CARDONA - BACKEND
+# back-inventarios
 
-# Logica de negocio para este backend
+## clonar el repo
+git clone https://github.com/julioiud/back-inventarios.git
 
-     -Controllers
-          ---ControladorTipoEquipo.
-          ---ControladorUsuario.
-          ---ControladorEstadoEquipo.
-          ---ControladorInventario(Actualmente en desarrollo)
-          ---ControladorMarcaEquipo.         
-     -Database
-          ---Configuration.
-     -Models
-          ---EstadoTipoEquipo.
-          ---Usuario.
-          ---EstadoEquipo.
-          ---Inventario.(Actualmente en desarrollo)
-          ---MarcaEquipo.
-     -Routes
-          ---RutasTipoEquipo
-          ---RutasUsuario.
-          ---RutasEstadoEQuipo.
-          ---RutasInventario(Actualmente en Desarrollo)
-     -.ENV
-     -App
-     -Package.lock.JSON
-     -Package.JSON
-     -Server.
-     -Colección de pruebas postman.
-     
-# Colección de pruebas API/POSTMAN.
+## instalar
+cd back-inventarios
+npm install
 
-     Para que puedas probar este backend se relaciona una carpeta con todas las solicitudes posibles que se pueden realizar al sistema.
-     
-     
-# Clonar este repositorio.
+## crear .env
+PORT=3000
+MONGO_URI=mongodb+srv://<user>:<password>@<url>/?retryWrites=true&w=majority
 
-    git clone https://github.com/josedav-17/ProyectoIUD.git
-
-# Ejecutar.  
-
-    Node Server.
-
-# Actualizar el .ENV
-
-    PORT=3000 MONGO_URI=mongodb+srv://:@/?retryWrites=true&w=majority
-    
-     
- 
-     
-
+## ejecutar
+node server

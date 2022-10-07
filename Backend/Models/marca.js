@@ -1,9 +1,9 @@
 const { Schema, model } = require("mongoose");
 
-const TipoEquipoSchema = Schema({
+const MarcaSchema = Schema({
     nombre: {
         type: String,
-        required: [true, 'Nombre equipo requerido']
+        required: [true, 'Nombre marca requerido']
     },
     estado:{
         type: Boolean,
@@ -20,4 +20,4 @@ const TipoEquipoSchema = Schema({
     }
 })
 
-module.exports = model('TipoEquipo', TipoEquipoSchema)
+module.exports = model('Marca', MarcaSchema)

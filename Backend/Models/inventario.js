@@ -4,7 +4,7 @@ const InventarioSchema = Schema({
     serial: {
         type: String,
         required: [true, 'serial requerido'],
-        unique: true
+        unique: [true, 'equipo en uso']
     },
     modelo:{
         type: String,
@@ -21,7 +21,7 @@ const InventarioSchema = Schema({
     },
     fechaCompra: {
         type: Date,
-        default: Date.now
+        default: new Date()
     },
     precio: {
         type: Number
@@ -33,12 +33,12 @@ const InventarioSchema = Schema({
     },
     marca: {
         type: Schema.Types.ObjectId,
-        ref: 'MarcaEquipo',
+        ref: 'Marca',
         required: true 
     },
     estado: {
         type: Schema.Types.ObjectId,
-        ref: 'EstadoEquipo',
+        ref: 'Estado',
         required: true 
     },
     tipoEquipo: {
@@ -46,8 +46,6 @@ const InventarioSchema = Schema({
         ref: 'TipoEquipo',
         required: true 
     }
-});
+})
 
-module.exports = model("Inventario", InventarioSchema);
-
-
+module.exports = model('Inventario', InventarioSchema)
