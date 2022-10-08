@@ -6,7 +6,8 @@ const {
     getInventarioByID,
     updateInventarioByID,
     deleteInventarioByID,
-    uploadImage
+    uploadImageByID,
+    getImageByID
 } = require('../controllers/inventario')
 
 const router = Router()
@@ -16,8 +17,8 @@ router.post('/', createInventario)
 router.get('/:id', getInventarioByID)
 router.put('/:id', updateInventarioByID)
 router.delete('/:id', deleteInventarioByID)
-router.put('/upload/:id', uploadImage)
-
+router.post('/:id/images', uploadImageByID);
+router.get('/:id/images', getImageByID);
 
 
 module.exports = router
