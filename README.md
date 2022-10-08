@@ -1,11 +1,11 @@
-# back-inventarios
+# backEnd de inventarios
+Aplicacion de inventarios
 
 ## clonar el repo
-git clone https://github.com/julioiud/back-inventarios.git
+git clone https://github.com/josedav-17/ProyectoIUD.git
 
-## instalar
-cd back-inventarios
-npm install
+## Lenguaje
+Desarrollado en javacript, motor de bd Mongo
 
 ## crear .env
 PORT=3000
