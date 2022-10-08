@@ -1,8 +1,7 @@
 const Estado = require('../models/estado')
 const { request, response } = require('express')
-/**
- * Crea un estado de equipo
- */
+
+
 const createEstado = async (req = request, 
     res = response) => {
         try{
@@ -46,9 +45,6 @@ const getEstados = async (req = request,
     }
 }
 
-/**
- *  Consulta un estado por su ID
- */
 const getEstadoByID = async (req = request,
     res = response) => {
     try{
@@ -63,9 +59,7 @@ const getEstadoByID = async (req = request,
     }
 }
 
-/**
- * Actualiza un estado por su ID
- */
+
 const updateEstadoByID = async (req = request,
     res = response) => {
         try{
@@ -82,9 +76,7 @@ const updateEstadoByID = async (req = request,
         }
 }
 
-/**
- * Borra un estado por su ID
- */
+
 const deleteEstadoByID = async (req = request,
     res = response) => {
     try{

@@ -1,8 +1,7 @@
 const Marca = require('../models/marca')
 const { request, response } = require('express')
-/**
- * Crea un marca de equipo
- */
+
+
 const createMarca = async (req = request, 
     res = response) => {
         try{
@@ -29,9 +28,7 @@ const createMarca = async (req = request,
         }
 }
 
-/**
- * Consulta todos las marcas de equipo
- */
+
 const getMarcas = async (req = request, 
     res = response) => {
     try{
@@ -45,9 +42,7 @@ const getMarcas = async (req = request,
     }
 }
 
-/**
- *  Consulta una marca por su ID
- */
+
 const getMarcaByID = async (req = request, 
     res = response) => {
     try{
@@ -59,9 +54,7 @@ const getMarcaByID = async (req = request,
     }
 }
 
-/**
- * Actualiza una marca por su ID
- */
+
 const updateMarcaByID = async (req = request, 
     res = response) => {
     try{
@@ -78,9 +71,7 @@ const updateMarcaByID = async (req = request,
     }  
 }
 
-/**
- * Borra una marca por su ID
- */
+
 const deleteMarcaByID = async (req = request, 
     res = response) => {
         try{

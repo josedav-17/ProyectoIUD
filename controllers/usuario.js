@@ -1,8 +1,7 @@
 const Usuario = require('../models/usuario')
 const { request, response } = require('express')
-/**
- * Crea un usuario
- */
+
+
 const createUsuario = async (req = request, 
     res = response) => {
     try{
@@ -23,9 +22,7 @@ const createUsuario = async (req = request,
     }
 }
 
-/**
- * Consulta todos los usuarios
- */
+
 const getUsuarios = async (req = request, 
     res = response) => {
     try{
@@ -39,9 +36,7 @@ const getUsuarios = async (req = request,
     }
 }
 
-/**
- *  Consulta un usuario por su ID
- */
+
 const getUsuarioByID = async (req = request, 
     res = response) => {
     try{
@@ -54,9 +49,7 @@ const getUsuarioByID = async (req = request,
     }
 }
 
-/**
- * Actualiza un usuario por su ID
- */
+
 const updateUsuarioByID = async (req = request, 
     res = response) => {
     try{
@@ -73,9 +66,7 @@ const updateUsuarioByID = async (req = request,
     }  
 }
 
-/**
- * Borra un usuario por su ID
- */
+
 const deleteUsuarioByID = async (req = request, 
     res = response) => {
     try{

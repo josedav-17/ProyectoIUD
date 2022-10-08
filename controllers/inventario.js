@@ -3,9 +3,7 @@ const { request, response } = require('express')
 const Usuario = require('../models/usuario')
 const Marca = require('../models/marca')
 
-/**
- * Consulta todos los inventarios
- */
+
 const getInventarios = async (req, res = response) => {
     try{
         const inventarios = await Inventario.find()
@@ -33,9 +31,7 @@ const getInventarios = async (req, res = response) => {
     }
 }
 
-/**
- * Guardar un inventario
- */
+
 const createInventario = async (req = request, 
     res = response) => {
     try{
@@ -70,9 +66,6 @@ const createInventario = async (req = request,
     }
 }
 
-/**
- * Consulta inventario por ID
- */
  const getInventarioByID = async (req = request, 
     res = response) => {
 
@@ -90,9 +83,8 @@ try{
 }
 
 }
-/**
- * Actualiza inventario por ID
- */
+
+
 const updateInventarioByID = async (req = request, 
     res = response) => {
 
@@ -108,9 +100,7 @@ const updateInventarioByID = async (req = request,
 
 }
 
-/**
- * Borra inventario por ID
- */
+
 const deleteInventarioByID = async (req = request, 
     res = response) => {
 
@@ -126,7 +116,7 @@ const deleteInventarioByID = async (req = request,
 
 }
 
-//subir imagen
+
 const uploadImage = async (req = request, res = response) => {
     try{
         const { id } = req.params
@@ -168,8 +158,6 @@ const uploadImage = async (req = request, res = response) => {
         return res.status(500).json({msj: 'Error'})
     }
 }
-
-
 
 
 module.exports = {

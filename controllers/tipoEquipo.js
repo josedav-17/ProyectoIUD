@@ -1,8 +1,7 @@
 const TipoEquipo = require('../models/tipoEquipo')
 const { request, response } = require('express')
-/**
- * Crea un tipo de equipo
- */
+
+
 const createTipoEquipo = async (req = request, 
     res = response) => {
     try{
@@ -30,9 +29,7 @@ const createTipoEquipo = async (req = request,
     }
 }
 
-/**
- * Consulta todos los tipos de equipo
- */
+
 const getTiposEquipo = async (req = request,
         res = response) => {
     try{
@@ -47,9 +44,7 @@ const getTiposEquipo = async (req = request,
     }
 }
 
-/**
- *  Consulta un tipo de equipo por su ID
- */
+
 const getTipoEquipoByID = async (req = request,
     res = response) => {
     try{
@@ -64,9 +59,7 @@ const getTipoEquipoByID = async (req = request,
     }
 }
 
-/**
- * Actualiza un tipo de equipo por su ID
- */
+
 const updateTipoEquipoByID = async (req = request,
     res = response) => {
     try{
@@ -88,9 +81,7 @@ const updateTipoEquipoByID = async (req = request,
     }
 }
 
-/**
- * Borra un tipo de equipo por su ID
- */
+
 const deleteTipoEquipoByID = async (req = request,
     res = response) => {
     try{
