@@ -4,6 +4,8 @@ Aplicacion de inventarios
 ## clonar el repositorio 
 
 backend: git clone https://github.com/josedav-17/ProyectoIUD.git
+
+
 Frontend. https://github.com/josedav-17/Proyecto.git
 
 
