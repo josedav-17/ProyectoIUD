@@ -1,4 +1,4 @@
-# backEnd de inventarios
+# Backend de Inventarios
 Aplicacion de inventarios
 
 ## clonar el repo
