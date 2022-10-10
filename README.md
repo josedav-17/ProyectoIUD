@@ -3,12 +3,13 @@ Aplicacion de inventarios
 
 ## clonar el repositorio 
 
-backend: git clone https://github.com/josedav-17/ProyectoIUD.git
-
-##backend desplegado actualmente heroku:  
+## Backend: (este repo)
+git clone https://github.com/josedav-17/ProyectoIUD.git
+actualmente heroku:  
 https://josedav17.herokuapp.com/api/
 
-Frontend. https://github.com/josedav-17/Proyecto.git
+## Frontend:
+https://github.com/josedav-17/Proyecto.git
 
 ##FrontEnd desplegado actualmente en netlify
 https://adorable-stardust-2ebb9c.netlify.app/
