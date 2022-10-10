@@ -1,8 +1,11 @@
 # Backend de Inventarios
 Aplicacion de inventarios
 
-## clonar el repo
-git clone https://github.com/josedav-17/ProyectoIUD.git
+## clonar el repositorio 
+
+backend: git clone https://github.com/josedav-17/ProyectoIUD.git
+Frontend. https://github.com/josedav-17/Proyecto.git
+
 
 ## Lenguaje
 Desarrollado en javacript, motor de bd Mongo
