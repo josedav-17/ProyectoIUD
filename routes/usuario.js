@@ -1,20 +1,15 @@
 const { Router } = require('express')
-const { 
-    createUsuario, 
-    getUsuarios, 
-    getUsuarioByID,
-    updateUsuarioByID,
-    deleteUsuarioByID
-} = require('../controllers/usuario')
+const { createUsuario, getUsuarios, getUsuarioByID, updateUsuarioByID, deleteUsuarioByID } = require('../controllers/usuario')
+const { validarRol } = require('../middleware/validarRolAdmin')
+const { validarjwt } = require('../middleware/validar-jwt')
 
 const router = Router()
 
-
-router.post('/', createUsuario)
-router.get('/', getUsuarios)
-router.get('/:id', getUsuarioByID)
-router.put('/:id', updateUsuarioByID)
-router.delete('/:id', deleteUsuarioByID)
+router.post('/',[validarjwt, validarRol], createUsuario)
+router.get('/', [validarjwt, validarRol], getUsuarios)
+router.get('/:id', [validarjwt, validarRol], getUsuarioByID)
+router.put('/:id', [validarjwt, validarRol ], updateUsuarioByID)
+router.delete('/:id', [validarjwt, validarRol ], deleteUsuarioByID)
 
 module.exports = router
 

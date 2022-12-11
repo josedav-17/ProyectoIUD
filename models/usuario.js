@@ -10,6 +10,15 @@ const UsuarioSchema = Schema({
         required: [true, 'Email requerido'],
         unique: true
     },
+    password: {
+        type: String,
+        required: [true, 'Password requerido']
+    },
+    rol: {
+        type: String,
+        required: [true, 'Rol requerido'],
+        enum: ['ADMIN_ROLE', 'DOCENTE_ROLE']
+    },
     estado:{
         type: Boolean,
         default: true,

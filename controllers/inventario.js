@@ -2,9 +2,11 @@ const Inventario = require('../models/inventario')
 const { request, response } = require('express')
 const Usuario = require('../models/usuario')
 const Marca = require('../models/marca')
+const { validarjwt } = require('../middleware/validar-jwt')
 
+const getInventarios = async function (req, res = response) {
+    [validarjwt]
 
-const getInventarios = async (req, res = response) => {
     try{
         const inventarios = await Inventario.find()
         .populate({
@@ -32,8 +34,8 @@ const getInventarios = async (req, res = response) => {
 }
 
 
-const createInventario = async (req = request, 
-    res = response) => {
+const createInventario = async function (req = request,  res = response) {
+    [validarjwt]	
     try{
         const data = req.body;
         const { usuario, marca } = data;
@@ -66,9 +68,8 @@ const createInventario = async (req = request,
     }
 }
 
- const getInventarioByID = async (req = request, 
-    res = response) => {
-
+ const getInventarioByID = async function (req = request,  res = response) {
+    [validarjwt]
 try{
     const { id } = req.params;
     const inventarioBD = await Inventario.findById(id)
@@ -85,9 +86,8 @@ try{
 }
 
 
-const updateInventarioByID = async (req = request, 
-    res = response) => {
-
+const updateInventarioByID = async function (req = request,  res = response){
+    [validarjwt]
     try{
         const { id } = req.params
         const data = req.body
@@ -101,9 +101,8 @@ const updateInventarioByID = async (req = request,
 }
 
 
-const deleteInventarioByID = async (req = request, 
-    res = response) => {
-
+const deleteInventarioByID = async function (req = request,  res = response) {
+    [validarjwt]
     try{
         const { id } = req.params
         const data = req.body
@@ -117,7 +116,9 @@ const deleteInventarioByID = async (req = request,
 }
 
 
-const uploadImageByID = async (req = request, res = response) => {
+const uploadImageByID = async function (req = request, res = response) { 
+    [validarjwt]
+
     const { id } = req.params;
     const invBD = await Inventario.findOne({ _id: id});
     if(!invBD){
@@ -157,7 +158,8 @@ const uploadImageByID = async (req = request, res = response) => {
     res.json({msj: 'Subido a ' + uploadPath});
 }
 
-const getImageByID = async (req = request, res = response) => {
+const getImageByID = async function (req = request, res = response) { 
+    [validarjwt]
     const { id } = req.params;
     const inventarioBD = await Inventario.findOne({ _id: id});
     // TODO: VALIDAR QUE NO EXISTE

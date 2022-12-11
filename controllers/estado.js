@@ -1,11 +1,27 @@
 const Estado = require('../models/estado')
 const { request, response } = require('express')
+const { validationResult} = require('express-validator')
+const { validarjwt } = require('../middleware/validar-jwt')
+const { validarRol } = require('../middleware/validarRolAdmin')
 
 
-const createEstado = async (req = request, 
-    res = response) => {
-        try{
-            //console.log(req.body)
+const createEstado = async function (req = request,  res = response) {
+    [validarjwt, validarRol]
+
+    const errors = validationResult(req)
+    if(!errors.isEmpty()){
+        return res.status(400).json({
+            errors: errors.array()
+        })
+    }
+    //si no es admin se le envia un mensaje de error
+    if(!req.usuario.rol === 'ADMIN_ROLE'){
+        return res.status(401).json({
+            msg: 'No tiene privilegios para crear un tipo de equipo'
+        })
+    }
+
+    try{
             const nombre = (req.body.nombre) 
             ? req.body.nombre.toUpperCase()
             : '';
@@ -28,40 +44,34 @@ const createEstado = async (req = request,
         }
 }
 
-/**
- * Consulta todos los estados de equipo
- */
-const getEstados = async (req = request,
-    res = response) => {
+
+const getEstados = async function  (req = request, res = response) {
+    [validarjwt, validarRol]
     try{
-        console.log(req.query)
-        const estado = req.query.estado
-        const query = {estado: estado}
-        const estadosDB = await Estado.find(query)
-        return res.json(estadosDB)
+        const estados = await Estado.find()
+        return res.json(estados)
     }catch(e){
         console.log(e)
-        return res.status(500).json({msg: e})  
+        return res.status(500).json({msg: e})
     }
 }
 
-const getEstadoByID = async (req = request,
-    res = response) => {
+const getEstadoByID = async function (req = request, res = response) {
+    [validarjwt, validarRol]
     try{
-        console.log(req.params)
         const id = req.params.id
-        const query = {_id: id}
-        const estadoDB = await Estado.findOne(query)
-        return res.json(estadoDB)
+        const estado = await Estado.findById(id)
+        return res.json(estado)
     }catch(e){
         console.log(e)
-        return res.status(500).json({msg: e})  
+        return res.status(500).json({msg: e})
     }
 }
 
 
-const updateEstadoByID = async (req = request,
-    res = response) => {
+
+const updateEstadoByID = async function (req = request, res = response) {
+    [validarjwt, validarRol]
         try{
             console.log(req.body)
             console.log(req.params)
@@ -77,8 +87,8 @@ const updateEstadoByID = async (req = request,
 }
 
 
-const deleteEstadoByID = async (req = request,
-    res = response) => {
+const deleteEstadoByID = async function (req = request, res = response) {
+    [validarjwt, validarRol]
     try{
         console.log(req.params)
         const id = req.params.id

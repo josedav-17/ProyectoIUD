@@ -1,9 +1,11 @@
 const Marca = require('../models/marca')
 const { request, response } = require('express')
+const validarjwt  = require('../middleware/validar-jwt');
+const validarRol = require('../middleware/validarRolAdmin');
 
-
-const createMarca = async (req = request, 
-    res = response) => {
+const createMarca = async function (req = request, res = response){
+   //para crear una marca se necesita tener token y ser admin
+    [validarjwt, validarRol]
         try{
             //console.log(req.body)
             const nombre = (req.body.nombre) 
@@ -29,22 +31,19 @@ const createMarca = async (req = request,
 }
 
 
-const getMarcas = async (req = request, 
-    res = response) => {
-    try{
-        console.log(req.query)
-        const estado = req.query.estado
-        const query = { estado: estado }
-        const marcas = await Marca.find(query)
-        return res.json(marcas)
+const getMarcas = async function (req = request,  res = response) {
+    [validarjwt, validarRol]
+    try {
+        const marcas = await Marca.find()
+        return res.json(marcas)	
     }catch(e){
         return res.status(500).json({msj: e})
     }
 }
 
 
-const getMarcaByID = async (req = request, 
-    res = response) => {
+const getMarcaByID = async function (req = request,  res = response) {
+    [validarjwt, validarRol]	
     try{
         const id = req.params.id
         const marcaDB = await Marca.findById(id)
@@ -55,8 +54,9 @@ const getMarcaByID = async (req = request,
 }
 
 
-const updateMarcaByID = async (req = request, 
-    res = response) => {
+const updateMarcaByID = async function (req = request,  res = response) {
+    [validarjwt, validarRol]
+
     try{
         const id = req.params.id
         const data = req.body
@@ -72,8 +72,9 @@ const updateMarcaByID = async (req = request,
 }
 
 
-const deleteMarcaByID = async (req = request, 
-    res = response) => {
+const deleteMarcaByID = async function (req = request,  res = response) {
+    [validarjwt, validarRol]
+
         try{
             const id = req.params.id
             const marcaBD = await Marca.findById(id)

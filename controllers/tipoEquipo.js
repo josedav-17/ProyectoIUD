@@ -1,9 +1,18 @@
 const TipoEquipo = require('../models/tipoEquipo')
 const { request, response } = require('express')
+const { validationResult } = require('express-validator')
+const { validarjwt } = require('../middleware/validar-jwt')
+const { validarRol } = require('../middleware/validarRolAdmin')
 
+const createTipoEquipo = async function (req = request,  res = response) {
+    [validarjwt, validarRol]
+    const errors = validationResult(req)
+    if(!errors.isEmpty()){
+        return res.status(400).json({
+            errors: errors.array()
+        })
+    }
 
-const createTipoEquipo = async (req = request, 
-    res = response) => {
     try{
         //console.log(req.body)
         const nombre = (req.body.nombre) 
@@ -30,23 +39,20 @@ const createTipoEquipo = async (req = request,
 }
 
 
-const getTiposEquipo = async (req = request,
-        res = response) => {
+const getTiposEquipo = async function (req = request, res = response) {
+    [validarjwt, validarRol]
     try{
-        console.log(req.query)
-        const estado = req.query.estado
-        const query = {estado: estado}
-        const tipoequiposDB = await TipoEquipo.find(query)
-        return res.json(tipoequiposDB)
+        const tiposEquipo = await TipoEquipo.find()
+        return res.json(tiposEquipo)
     }catch(e){
         console.log(e)
-        return res.status(500).json({msg: e})  
+        return res.status(500).json({msg: e})
     }
 }
 
 
-const getTipoEquipoByID = async (req = request,
-    res = response) => {
+const getTipoEquipoByID = async function (req = request, res = response) {
+    [validarjwt, validarRol]
     try{
         console.log(req.params)
         const id = req.params.id
@@ -60,8 +66,9 @@ const getTipoEquipoByID = async (req = request,
 }
 
 
-const updateTipoEquipoByID = async (req = request,
-    res = response) => {
+const updateTipoEquipoByID = async function (req = request, res = response) {
+    [validarjwt, validarRol]
+
     try{
         console.log(req.body)
         console.log(req.params)
@@ -82,8 +89,8 @@ const updateTipoEquipoByID = async (req = request,
 }
 
 
-const deleteTipoEquipoByID = async (req = request,
-    res = response) => {
+const deleteTipoEquipoByID = async function (req = request, res = response) {
+    [validarjwt, validarRol]
     try{
         console.log(req.params)
         const id = req.params.id

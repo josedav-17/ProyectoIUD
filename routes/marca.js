@@ -6,14 +6,16 @@ const {
     updateMarcaByID,
     deleteMarcaByID
 }= require('../controllers/marca')
+const { validarRol } = require('../middleware/validarRolAdmin')
+const { validarjwt } = require('../middleware/validar-jwt')
 
 const router = Router()
 
-router.post('/', createMarca)
-router.get('/', getMarcas)
-router.get('/:id', getMarcaByID)
-router.put('/:id', updateMarcaByID)
-router.delete('/:id', deleteMarcaByID)
+router.post('/', [validarjwt, validarRol], createMarca)
+router.get('/', [validarjwt, validarRol], getMarcas)
+router.get('/:id', [validarjwt, validarRol], getMarcaByID)
+router.put('/:id', [validarjwt, validarRol], updateMarcaByID)
+router.delete('/:id', [validarjwt, validarRol], deleteMarcaByID)
 
 module.exports = router
 
