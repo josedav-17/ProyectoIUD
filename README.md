@@ -1,18 +1,13 @@
-# Backend de Inventarios
-Aplicacion de inventarios
+# Backend de Inventarios The Store
+Aplicacion de inventarios y gestion de productos THE STORE
 
 ## clonar el repositorio 
 
 ## Backend: (este repo)
 git clone https://github.com/josedav-17/ProyectoIUD.git
 
-Actualmente desplegado tambien heroku:  
-https://josedav17.herokuapp.com/api/
-
-
 ## Frontend: (repo frontEnd)
 git clone https://github.com/josedav-17/Proyecto.git
-
 
 ## Lenguaje
 Desarrollado en javacript, motor de bd Mongo
